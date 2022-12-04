@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Responsive Sidebar Navigation With Hamburger Toggle Button
+    </title>
+    <!--====== CSS ======-->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!--====== Sidebar ======-->
+    <aside id="sidebar">
+      <div class="sidebar-overlay"></div>
+      <div class="sidebar-menu">
+        <img src="closed.svg" alt="closed" class="sidebar-closed-icon">
+        <div class="sidebar_content sidebar_head">
+          <h1>Sidebar</h1>
+        </div>
+
+        <div class="sidebar_body">
+          <nav class="side_navlinks">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="sidebar_content sidebar_foot">
+          <p>
+            &#169;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            &#160;JavaScript Sidebar.
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!--== Sidebar-Toggler ==-->
+    <div class="sidebar_toggler">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="container">
+      <h1>
+        Responsive Sidebar Navigation With Hamburger Toggle Button
+      </h1>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+/*--====== Global Variables ======--*/
+:root {
+  --bg-color: #13131f;
+  --bg-color-2: #161623;
+  --text-color: #a9afc3;
+}
+
+/*--====== CSS Reset ======--*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*--====== Sidebar ======--*/
+#sidebar {
+  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.4s linear;
+}
+
+/* when the sidebar has 'show' class */
+#sidebar.show {
+  pointer-events: all;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 2rem;
+  min-width: 30rem;
+  height: 100%;
+  background-color: var(--bg-color-2);
+  box-shadow: 0 1rem 2rem -0.4rem #000;
+}
+
+@media (max-width: 375px) {
+  .sidebar-menu {
+    min-width: 27rem;
+  }
+}
+
+.sidebar-closed-icon {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  cursor: pointer;
+  display: none;
+}
+
+.sidebar_content {
+  margin: 7rem 0 2rem;
+  pointer-events: none;
+  /* so that the Sidebar does not get closed while clicking on sidebar_content */
+}
+
+.sidebar_content a {
+  pointer-events: all;
+  /* so that all the <a> inside sidebar_content are clickable */
+}
+
+.sidebar_body {
+  border-top: 1px dashed var(--text-color);
+  border-bottom: 1px dashed var(--text-color);
+}
+
+.side_navlinks {
+    padding: 2rem 0;
+}
+
+.side_navlinks ul li:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.side_navlinks ul li a {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color);
+}
+
+/*---- Sidebar-Toggler ----*/
+.sidebar_toggler {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  width: 3rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+@media (max-width: 375px) {
+  .sidebar_toggler {
+    top: 2rem;
+    right: 2rem;
+    width: 2.5rem;
+    height: 1.5rem;
+  }
+}
+
+.sidebar_toggler span {
+  background-color: #ddd;
+  width: 100%;
+  height: 0.2rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  /* so that it doesn't overlap the sidebar_toggler */
+}
+
+/* if the sidebar has 'show' class then their adjacent-sibling (i.e., sidebar_toggler) will... */
+#sidebar.show + .sidebar_toggler {
+  justify-content: center;
+}
+
+#sidebar.show + .sidebar_toggler span {
+  margin-top: -0.12rem;
+  margin-bottom: -0.12rem;
+}
+
+#sidebar.show + .sidebar_toggler span:first-child {
+  transform: rotate(45deg);
+}
+
+#sidebar.show + .sidebar_toggler span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+#sidebar.show + .sidebar_toggler span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* ---------- Container Content ---------- */
+.container h1 {
+  font-size: 3rem;
+  text-align: center;
+}
